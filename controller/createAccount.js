@@ -17,13 +17,15 @@ module.exports = async (req, res) => {
             const createUser = new mongoModel.User({ username, password: hashPassword })
 
             await createUser.save()
-            res.status(200).send("user created successfully")
+           return res.status(200).send("user created successfully")
         }
 
 
 
     } catch (error) {
-        res.status(200).send("failed to register ", console.log(error))
+        if(error){
+          return res.status(200).send("failed to register")
+        }
 
     }
 }

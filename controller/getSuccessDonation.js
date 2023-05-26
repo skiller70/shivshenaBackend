@@ -6,7 +6,7 @@ module.exports = async(req,res)=>{
         const result = await mongoModel.Donation.find({})
 
             res.status(200).send(result)
-
+                                                                                                            
         
         
     } catch (error) {

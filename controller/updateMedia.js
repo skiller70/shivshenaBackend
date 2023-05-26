@@ -14,7 +14,9 @@ module.exports = async (req, res) => {
 
     } catch (error) {
 
-        res.status(500).send("failed to update media ")
+     if(error){
+       return res.status(500).send("failed to update media ")
+     }
     }
 
 

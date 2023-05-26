@@ -31,10 +31,10 @@ module.exports = async (req, res) => {
         };
 
 
-       await transporter.sendMail(mailOptions)
-       const saveLead = new mongoModel.Leads({ name, email, number, about })
+        await transporter.sendMail(mailOptions)
+        const saveLead = new mongoModel.Leads({ name, email, number, about })
         await saveLead.save()
-       return res.status(200).send("email sent successfully")
+        return res.status(200).send("email sent successfully")
 
         // console.log(info)
         // if (info) {
@@ -49,7 +49,9 @@ module.exports = async (req, res) => {
 
 
     } catch (error) {
-        res.status(500).send("something went wrong")
+        if (error) {
+            return res.status(500).send("something went wrong")
+        }
     }
 
 

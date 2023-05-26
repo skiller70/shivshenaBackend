@@ -8,7 +8,7 @@ module.exports = async (req,res)=>{
    } catch (error) {
     
     if(error){
-        res.status(500).send("failed to fetch leads")
+      return res.status(500).send("failed to fetch leads")
     }
    }
 

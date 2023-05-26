@@ -13,7 +13,9 @@ const {username,password} = req.auth
         res.status(200).send(token)
     } catch (error) {
 
-        res.status(500).send("internal server error")
+      if(error){
+       return res.status(500).send("internal server error")
+      }
     }
 
 
