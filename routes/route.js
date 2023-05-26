@@ -12,6 +12,11 @@ const uploader = require("../middleware/createmediaMiddleware")
 const deleteMedia = require("../controller/deleteMedia")
 const updateMedia = require("../controller/updateMedia")
 const getSingleMedia = require("../controller/getSingleMedia")
+const getLeads = require("../controller/getLeads")
+const donation = require("../controller/donation")
+const getSuccessDonation = require("../controller/getSuccessDonation")
+const getFailedDonation = require("../controller/getFailedDonation")
+
 //EXPRESS MIDDLEWARE
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -64,7 +69,20 @@ router.route("/createmedia").post(uploader.single("media"),createMedia)
 router.route("/updatemedia").post(uploader.single("media"),updateMedia)
 // UPDATE MEDIA
 
+// GET LEADS
+router.route("/getleads").get(getLeads)
+// GET LEADS
 
+// DONATION 
+router.route("/donation").post(donation)
+// DONATION
 
+// GET FAILED DONATION
+router.route("/getfaileddonation").get(getFailedDonation)
+// GET FAILED DONATION
+
+// GET Success DONATION
+router.route("/getsuccessdonation").get(getSuccessDonation)
+// GET Success DONATION
 
 module.exports = router;
