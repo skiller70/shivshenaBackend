@@ -3,7 +3,7 @@ const router = express.Router()
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mailer = require("../controller/mailer")
-const loginMiddleware = require ("../middleware/loginMiddleware")
+const loginMiddleware = require("../middleware/loginMiddleware")
 const createAccount = require("../controller/createAccount")
 const login = require("../controller/login")
 const createMedia = require("../controller/createMedia")
@@ -16,6 +16,9 @@ const getLeads = require("../controller/getLeads")
 const donation = require("../controller/donation")
 const getSuccessDonation = require("../controller/getSuccessDonation")
 const getFailedDonation = require("../controller/getFailedDonation")
+const contact = require("../controller/contact")
+
+
 
 //EXPRESS MIDDLEWARE
 router.use(bodyParser.json());
@@ -40,7 +43,7 @@ router.route("/mail").post(mailer)
 
 
 // LOGIN ROUTE
-router.route("/login").post(loginMiddleware,login)
+router.route("/login").post(loginMiddleware, login)
 // LOGIN ROUTE
 
 // LOGIN ROUTE
@@ -52,6 +55,7 @@ router.route("/register").post(createAccount)
 router.route("/getmedia").get(getMedia)
 // GET MEDIA
 
+
 // GET SINGLE MEDIA
 router.route("/getsinglemedia/:id").get(getSingleMedia)
 // GET SINGLE MEDIA
@@ -61,25 +65,45 @@ router.route("/getsinglemedia/:id").get(getSingleMedia)
 router.route("/deletemedia").post(deleteMedia)
 // DELETE MEDIA
 
+
 // CREATE MEDIA
-router.route("/createmedia").post(uploader.single("media"),createMedia)
+router.route("/createmedia").post(uploader.single("media"), createMedia)
 // CREATE MEDIA
 
+
 // UPDATE MEDIA
-router.route("/updatemedia").post(uploader.single("media"),updateMedia)
+router.route("/updatemedia").post(uploader.single("media"), updateMedia)
 // UPDATE MEDIA
+
 
 // GET LEADS
 router.route("/getleads").get(getLeads)
 // GET LEADS
 
+
+
+// CONTACT US
+
+router.route("/contactus").post(contact)
+// CONTACT US
+
+
+
+
+
+
+
+
 // DONATION 
 router.route("/donation").post(donation)
 // DONATION
 
+
 // GET FAILED DONATION
 router.route("/getfaileddonation").get(getFailedDonation)
 // GET FAILED DONATION
+
+
 
 // GET Success DONATION
 router.route("/getsuccessdonation").get(getSuccessDonation)

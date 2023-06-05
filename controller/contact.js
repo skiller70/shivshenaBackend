@@ -1,5 +1,6 @@
-const nodemailer = require('nodemailer');
 const mongoModel = require("../database/schema")
+const nodemailer = require('nodemailer');
+
 
 // CONFIGURATION
 const transporter = nodemailer.createTransport({
@@ -13,9 +14,10 @@ const transporter = nodemailer.createTransport({
 
 // CONFIGURATION
 
+
 module.exports = async (req, res) => {
-    console.log(req.body)
-    
+
+
     try {
         const { name, email, number, message } = req.body
 
@@ -31,33 +33,22 @@ module.exports = async (req, res) => {
         };
 
 
+
         await transporter.sendMail(mailOptions)
-        const saveLead = new mongoModel.Leads({ name, email, number, message })
-        await saveLead.save()
-        return res.status(200).send("email sent successfully")
+        const contactDetail = mongoModel.Contact({ name, email, number, message })
+        await contactDetail.save()
 
-        // console.log(info)
-        // if (info) {
-        //     const saveLead = new mongoModel.Leads({ name, email, number, about })
-        //     await saveLead.save()
-        //     return res.status(200).send("email sent successfully")
-        // } else {
 
-        //     return res.status(500).send("something went wrong")
-
-        // }
-
+        res.status(200).send("Thank you for touching with us")
 
     } catch (error) {
         if (error) {
-            return res.status(500).send("something went wrong")
+
+            return res.status(400).send("something went wrong")
+
         }
+
     }
 
 
-
-
-
-
 }
-
