@@ -3,7 +3,7 @@ const mongoModel = require("../database/schema")
 
 module.exports = async (req, res) => {
 
-    console.log(req.body)
+    
     try {
         await mongoModel.Video.findByIdAndDelete({ _id: req.body.id })
         res.status(200).send("video deleted successfully")
