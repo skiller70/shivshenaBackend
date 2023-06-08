@@ -17,8 +17,13 @@ const donation = require("../controller/donation")
 const getSuccessDonation = require("../controller/getSuccessDonation")
 const getFailedDonation = require("../controller/getFailedDonation")
 const contact = require("../controller/contact")
-
-
+const uploadVideo = require("../controller/uploadVideo")
+const videoUploader = require("../middleware/createvideoMiddleware")
+const getVideos = require("../controller/getVideo")
+const deleteVideo = require("../controller/deleteVideo")
+const createPress = require("../controller/createPress")
+const getPress = require("../controller/getPress")
+const deletePress = require("../controller/deletePress")
 
 //EXPRESS MIDDLEWARE
 router.use(bodyParser.json());
@@ -87,12 +92,31 @@ router.route("/getleads").get(getLeads)
 router.route("/contactus").post(contact)
 // CONTACT US
 
+// CREATE PRESS
+router.route("/createpresss").post(uploader.single("media"), createPress)
+// CREATE PRESS
+
+// GET PRESS
+router.route("/getpress").get(getPress)
+// GET PRESS
 
 
+// DELETE PRESS
+router.route("/deletepress").post(deletePress)
+// DELETE PRESS
 
 
+// CREATE VIDEO
+router.route("/uploadvideo").post(videoUploader.single("video"), uploadVideo)
+// CREATE VIDEO
 
+// GET VIDEO
+router.route("/getvideos").get(getVideos)
+// GET VIDEO
 
+// DELETE VIDEO
+router.route("/deletevideo").post(deleteVideo)
+// DELETE VIDEO
 
 // DONATION 
 router.route("/donation").post(donation)

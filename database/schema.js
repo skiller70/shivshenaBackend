@@ -18,6 +18,27 @@ const media = new mongoose.Schema({
 })
 // MEDIA POSTS 
 
+// PRESS POST
+const press = new mongoose.Schema({
+    title: { type: String, required: true },
+    text: { type: String, required: true },
+    filename: { type: String, required: true },
+    link: { type: String, required: true },
+})
+// PRESS POST
+
+
+
+// VIDEO UPLOAD
+const video = new mongoose.Schema({
+    title: { type: String },
+    text: { type: String },
+    filename: { type: String, required: true },
+
+})
+// VIDEO UPLOAD 
+
+
 
 
 // LEADS
@@ -71,7 +92,9 @@ const Leads = mongoose.model("Leads", lead)
 const Donation = mongoose.model("Donation", donation)
 const FailedDonation = mongoose.model("FailedDonation", failedDonation)
 const Contact = mongoose.model("Contact", contact)
+const Video = mongoose.model("Video", video)
+const Press = mongoose.model("Press",press)
 
 
 
-module.exports = { User, Media, Donation, Leads, FailedDonation, Contact }
+module.exports = { User, Media, Donation, Leads, FailedDonation, Contact,Video,Press}

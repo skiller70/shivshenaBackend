@@ -11,11 +11,11 @@ var storage = multer.diskStorage({
     cb(null, "../../shivsenaWork/shivsenaWithBackend/public/") 
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '.jpg') //Appending .jpg
+    cb(null, Date.now() + '.mp4',"mkv",) //Appending .jpg
   }
 })
 
-const upload = multer({ storage: storage });
+const videoUpload = multer({ storage: storage });
 
 
-module.exports =  upload;
+module.exports =  videoUpload;
